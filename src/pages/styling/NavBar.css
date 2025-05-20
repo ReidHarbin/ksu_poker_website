@@ -1,0 +1,30 @@
+:root {
+    --clr-ksu-yellow: hsl(41, 100%, 55%)
+}
+
+.NavBar {
+    position:fixed;
+}
+
+button {
+    font-family: jura;
+    color: var(--clr-ksu-yellow);
+    background: none;
+    border: none;
+}
+
+@font-face {
+    font-family: jura;
+    src: url(./Jura-Regular.ttf);
+}
+
+
+
+
+
+
+
+
+
+
+
