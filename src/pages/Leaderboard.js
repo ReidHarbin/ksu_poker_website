@@ -33,12 +33,6 @@ function renderLeaderBoard(players, lastSessionLeaderboard) {
                 changeImg = ChangeUp
             } 
 
-            // if (p.lastSessionTotal < 0) {
-            //     gainLoss = p.chipTotal + p.lastSessionTotal;
-            // } else {
-            //     gainLoss = p.chipTotal - p.lastSessionTotal;
-            // }
-
             if (p.chipTotal < 0) {
                 liClassname = liClassname.concat(" depshere");
             } else if (p.chipTotal === 0) {
@@ -47,7 +41,7 @@ function renderLeaderBoard(players, lastSessionLeaderboard) {
                 liClassname = liClassname.concat(" profitor")
             }
 
-            if ((ind + 1) % 2 === 0) {
+            if (pos % 2 === 0) {
                 liClassname = liClassname.concat(" odd-position")
             } else {
                 liClassname = liClassname.concat(" even-position")
@@ -97,7 +91,11 @@ function Leaderboard() {
                 data[2] =  {name: '', chip_delta: 0, chip_total: 0, current_chips: 0}
             }
 
-            data.sort(function(a, b) {return b.current_chips - a.current_chips;});
+            if (data.length < 2) {
+                data[1] =  {name: '', chip_delta: 0, chip_total: 0, current_chips: 0}
+            }
+
+            data.sort(function(a, b) {return b.chip_total - a.chip_total;});
             setPlayers(data);
     
             var lastSessionSortedLb = structuredClone(data);
@@ -168,61 +166,3 @@ function Leaderboard() {
 }
 
 export default Leaderboard;
-
-// [
-//             {
-//                 id: 1,
-//                 name: "Ish",
-//                 chipTotal: -100,
-//                 lastSessionTotal: 50
-//             },
-//             {
-//                 id: 2,
-//                 name: "Ryan",
-//                 chipTotal: 50,
-//                 lastSessionTotal: 100
-//             },
-//             {
-//                 id: 3,
-//                 name: "Reid",
-//                 chipTotal: 0,
-//                 lastSessionTotal: 15
-//             },
-//             {
-//                 id: 4,
-//                 name: "William Miller",
-//                 chipTotal: -14,
-//                 lastSessionTotal: 14
-//             }, 
-//             {
-//                 id: 5,
-//                 name: "Daniel",
-//                 chipTotal: -15,
-//                 lastSessionTotal: 15
-//             },
-//             {
-//                 id: 6,
-//                 name: "Adrian",
-//                 chipTotal: -150,
-//                 lastSessionTotal: 15
-//             },
-//             {
-//                 id: 7,
-//                 name: "AJ",
-//                 chipTotal: 20,
-//                 lastSessionTotal: 20
-
-//             },
-//             {
-//                 id: 8,
-//                 name: "Malachi",
-//                 chipTotal: 0,
-//                 lastSessionTotal: 15
-//             }, 
-//             {
-//                 id: 9,
-//                 name: "John",
-//                 chipTotal: 0,
-//                 lastSessionTotal: 10
-//             }
-//         ]
